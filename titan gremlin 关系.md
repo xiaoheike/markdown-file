@@ -26,7 +26,9 @@ titan 是一个可扩展的图数据库，通过分布式集群，可以存储�
 - 以 `Apache 2` 协议开源
 
 ## titan 与 gremlin 的关系 ##
-我们查看 `titan` 的 `jar` 包会发现，`titan` 将许多的服务给集合起来了，比如 `gremlin`，`cassandra`，`es` 等等。也就是说 `titan` 像是一个集合体，将不同的服务聚集并使他们能够相互协作，当需要全文检索时则调用 `es` 或者 `solr`，当需要存储服务时则调用相关的数据库，比如 `cassandra` 等等。
+- 我们查看 `titan` 的 `jar` 包会发现，`titan` 将许多的服务给集合起来了，比如 `gremlin`，`cassandra`，`es` 等等。也就是说 `titan` 像是一个集合体，将不同的服务聚集并使他们能够相互协作，当需要全文检索时则调用 `es` 或者 `solr`，当需要存储服务时则调用相关的数据库，比如 `cassandra` 等等。
 使用 `titan` 能够让我们在没有安装其他服务的情况下能够快速开始图的相关操作，当然为了性能，最终是需要独立部署相关的应用的。 
+- `titan` 使用 `gremlin` 实现顶点的处理。`titan` 一开始是使用 `Rexster` 实现该功能，之后 `Rester` 被替换为了 `GremlinServer`
+- 
 
 
