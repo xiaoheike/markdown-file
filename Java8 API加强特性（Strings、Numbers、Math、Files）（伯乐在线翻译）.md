@@ -2,11 +2,11 @@
 # Java8 API加强特性（Strings、Numbers、Math、Files）#
 Plenty of tutorials and articles cover the most important changes in Java 8 like [lambda expressions](http://winterbe.com/posts/2014/03/16/java-8-tutorial/) and [functional streams](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/). But furthermore many existing classes have been enhanced in the JDK 8 API with useful features and methods.
 
-大量教程和文章覆盖 Java 8 中最重要的变化，像《[lambda 表达式](http://winterbe.com/posts/2014/03/16/java-8-tutorial/)》和《[功能流](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/)》。但是另外 JDK 8 API 现有的许多类得到增强，携带有用的特性和方法。
+大量教程和文章覆盖 Java 8 中最重要的变化，像[lambda 表达式](http://winterbe.com/posts/2014/03/16/java-8-tutorial/)和[功能流](http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/)。但是另外 JDK 8 API 现有的许多类得到增强，携带有用的特性和方法。
 
 This article covers some of those smaller changes in the Java 8 API - each described with easily understood code samples. Let's take a deeper look into Strings, Numbers, Math and Files.
 
-本篇文章覆盖 Java 8 API 中一些小改变--每个描述都带有简单易理解的代码示例。让我们更深入的了解 Strings，Numbers，Math 和Files 类。
+本篇文章覆盖 Java 8 API 中一些小改变--每个变化都带有简单易理解的代码示例描述。让我们更深入的了解 Strings，Numbers，Math 和Files 类。
 ## Slicing Strings ##
 ## 分隔字符串 ##
 Two new methods are available on the String class: join and chars. The first method joins any number of strings into a single string with the given delimiter:
@@ -108,7 +108,7 @@ The number is not parseable as a signed int because it exceeds the maximum of 2^
 ## 处理算术 ##
 The utility class `Math` has been enhanced by a couple of new methods for handling number overflows. What does that mean? We've already seen that all number types have a maximum value. So what happens when the result of an arithmetic operation doesn't fit into its size?
 
-工具类 `Math` 通过一些处理数值溢出的新方法而得到增强。这意味着什么？我们已经看到所有的数值类型都有一个最大值。那么当一个算术运算的结果不适合它的大小会发生什么？
+工具类 `Math` 增加了一些处理数值溢出的新方法。这意味着什么？我们已经看到所有的数值类型都有一个最大值。那么当一个算术运算的结果不适合它的大小会发生什么？
 ```
 System.out.println(Integer.MAX_VALUE);      // 2147483647
 System.out.println(Integer.MAX_VALUE + 1);  // -2147483648
@@ -120,7 +120,7 @@ As you can see a so called **integer overflow** happens which is normally not th
 
 Java 8 adds support for strict math to handle this problem. `Math` has been extended by a couple of methods who all ends with `exact`, e.g. `addExact`. Those methods handle overflows properly by throwing an `ArithmeticException` when the result of the operation doesn't fit into the number type:
 
-Java 8 为严谨的数学提供支持，用于解决这个问题。'Math' 类扩展了一些方法，所有这些方法都以 'exact' 结尾，例如 `addExact`。这些方法恰当的处理溢出，当运算结果不适合该数值类型时，抛出一个异常 'ArithmeticException'：
+Java 8 为严谨的数学提供支持，用于解决这个问题。`Math` 类扩展了一些方法，所有这些方法都以 `exact` 结尾，例如 `addExact`。这些方法恰当的处理溢出，当运算结果不适合该数值类型时，抛出一个异常 `ArithmeticException`：
 ```
 try {
     Math.addExact(Integer.MAX_VALUE, 1);
@@ -234,11 +234,11 @@ Files.write(Paths.get("res/nashorn1-modified.js"), lines);
 
 Please keep in mind that those methods are not very memory-efficient because the whole file will be read into memory. The larger the file the more heap-size will be used.
 
-请记住，这些方法并不是非常内存高效的，因为整个文件将被读到内存中。文件越大，越多的堆内存将被使用。
+请记住，这些方法并不节省的，因为整个文件将被读到内存中。文件越大，越多的堆内存将被使用。
 
 As an memory-efficient alternative you could use the method `Files.lines`. Instead of reading all lines into memory at once, this method reads and streams each line one by one via functional streams.
 
-作为内存高效的选择，你可以使用 `Files.lines` 。这个方法通过功能流一行一行读取以及转为流，而不是一次性读取所有的行到内存中。
+作为节省内存的选择，你可以使用 `Files.lines` 。这个方法通过功能流依次读取每行并转化为流，而不是一次性读取所有的行到内存中。
 ```
 try (Stream<String> stream = Files.lines(Paths.get("res/nashorn1.js"))) {
     stream
@@ -260,7 +260,7 @@ try (BufferedReader reader = Files.newBufferedReader(path)) {
 
 Or in case you want to write to a file simply construct a buffered writer instead:
 
-或者以防万一你想要写入一个文件，取代上边的方式，简单构建一个写缓存：
+或者假设你想要写入一个文件，可以简单构建一个写缓存：
 ```
 Path path = Paths.get("res/output.js");
 try (BufferedWriter writer = Files.newBufferedWriter(path)) {
