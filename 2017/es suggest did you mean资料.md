@@ -73,6 +73,11 @@
    }
 }
 ```
+查询语法中指定的 `field:search_text_new` 使用 `ik` 分词。
+
+`suggest_mode` 参考文章：[http://elasticsearch.cn/article/142](http://elasticsearch.cn/article/142)，理解如下：
+`term suggester` 有一个可配置参数为 `suggest_mode`，可选值为：`popular`，`missing`，`always`。`missing` 是默认配置，如果搜索的关键词在文档中已经存在，那么将不会有推荐选项，比如 `北京` 一词已经在文档中存在，那么使用 `term suggest` 语法搜索 `北京` 将不会有推荐选项；`popular` 是指会推荐相似度更高的匹配词，比如文档中存在 `北京`，`北京人`，使用 `term suggest` 搜索 `北京`，如果 `北京人` 的分数高于 `北京` 则 `北京人` 会被推荐；`always` 是指只要是相似则会在推荐选项中给出，比如 `北京`，`北京人`，`北京城`，使用 `term suggest` 语法搜索 `北京` 会将 `北京人` 和 `北京城` 都做为推荐选项。
+
 ## [term suggester 参数](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/search-suggesters-term.html) ##
 `term suggester` 用到的一些参数及说明。
 
